@@ -2,6 +2,7 @@ use std::io;
 fn main() {
     let mut x = String::new();
     let mut y = String::new();
+    let mut choose = String::new();
 
     println!("Введите первое число.");
 
@@ -23,7 +24,26 @@ fn main() {
         Err(_) => panic!("Введен символ, а не число"),
     };
 
-    let result:f64 = x + y;
+    println!("Что будем делать?
+    1. +
+    2. -
+    3. /
+    4. *");
 
-    println!("Сумма двух чисел равна! {}", result)
+    io::stdin().read_line(&mut choose)
+    .expect("не получилось считать");
+
+    let choose:i8 = match choose.trim().parse() {
+        Ok(num) => num,
+        Err(_) => panic!("не получилось спарсить, возможно вы ввели символ")
+    };
+
+
+    match choose {
+        1 => println!("Сумма двух чисел равна {}", x + y),
+        2 => println!("Сумма двух чисел равна {}", x - y),
+        3 => println!("Сумма двух чисел равна {}", x / y),
+        4 => println!("Сумма двух чисел равна {}", x * y),
+        _=> panic!("Empty"),
+    };
 }
