@@ -23,7 +23,7 @@ fn main() {
         Err(_) => panic!("Введен символ, а не число"),
     };
 
-    let result = x + y;
+    let result:f64 = x + y;
 
     println!("Сумма двух чисел равна! {}", result)
 }
