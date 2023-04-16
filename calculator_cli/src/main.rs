@@ -9,7 +9,7 @@ fn main() {
     io::stdin().read_line(&mut x)
     .expect("не получилось считать");
 
-    let x:f64 = match x.trim().parse() {
+    let x:i64 = match x.trim().parse() {
         Ok(num) => num,
         Err(_) => panic!("Введен символ, а не число"),
     };
@@ -19,7 +19,7 @@ fn main() {
     io::stdin().read_line(&mut y)
     .expect("не получилось считать");
 
-    let y:f64 = match y.trim().parse() {
+    let y:i64 = match y.trim().parse() {
         Ok(num) => num,
         Err(_) => panic!("Введен символ, а не число"),
     };
@@ -40,10 +40,14 @@ fn main() {
 
 
     match choose {
-        1 => println!("Сумма двух чисел равна {}", x + y),
-        2 => println!("Сумма двух чисел равна {}", x - y),
-        3 => println!("Сумма двух чисел равна {}", x / y),
-        4 => println!("Сумма двух чисел равна {}", x * y),
+        1 => println!("Сумма двух чисел равна. {}", x + y),
+        2 => println!("Сумма двух чисел равна. {}", x - y),
+        3 => if y <= 0 {
+            panic!("Нельзя делить на ноль или меньшую сумму.");
+        } else {
+            println!("Сумма двух чисел равна. {}", x / y);
+        }
+        4 => println!("Сумма двух чисел равна. {}", x * y),
         _=> panic!("Empty"),
     };
 }
