@@ -26,5 +26,4 @@ fn main() {
     let result = x + y;
 
     println!("Сумма двух чисел равна! {}", result);
-
 }
